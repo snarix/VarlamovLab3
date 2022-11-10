@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VarlamovLab3", "VarlamovLab3\VarlamovLab3.csproj", "{CBE70338-567D-4C36-937E-5EEF8D96485F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibMatrix", "LibMatrix\LibMatrix.csproj", "{F0001BF1-842C-4186-B725-DC9B38B69250}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib_3", "Lib_3\Lib_3.csproj", "{07653FE0-1BDA-4DD9-8B79-C9417B487E49}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBE70338-567D-4C36-937E-5EEF8D96485F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBE70338-567D-4C36-937E-5EEF8D96485F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBE70338-567D-4C36-937E-5EEF8D96485F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBE70338-567D-4C36-937E-5EEF8D96485F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0001BF1-842C-4186-B725-DC9B38B69250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0001BF1-842C-4186-B725-DC9B38B69250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0001BF1-842C-4186-B725-DC9B38B69250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0001BF1-842C-4186-B725-DC9B38B69250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07653FE0-1BDA-4DD9-8B79-C9417B487E49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07653FE0-1BDA-4DD9-8B79-C9417B487E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07653FE0-1BDA-4DD9-8B79-C9417B487E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07653FE0-1BDA-4DD9-8B79-C9417B487E49}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E1B309B-6370-4F94-9C77-B44AA8369755}
+	EndGlobalSection
+EndGlobal

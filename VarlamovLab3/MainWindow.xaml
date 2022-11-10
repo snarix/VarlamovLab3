@@ -1,0 +1,84 @@
+﻿<Window x:Class="VarlamovLab3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VarlamovLab3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Menu VerticalAlignment="Top">
+            <MenuItem Header="О программе"
+                      Click="AboutProgramm"/>
+            <MenuItem Header="Выход"
+                      Click="Exit"/>
+        </Menu>
+
+        <DataGrid x:Name="Table"
+                  Margin="5,18,5,5"/>
+
+        <GroupBox Header="Работа с массивом" 
+                  Grid.Row="2">
+            <Grid>
+                <Label Content="Кол-во строк"
+                         Margin="5,0,635,164"/>
+                <TextBox x:Name="RowCount" 
+                         Margin="5,30,635,126"/>
+
+                <Label Content="Кол-во колонок"
+                         Margin="5,68,635,101"/>
+                <TextBox x:Name="ColumnCount" 
+                         Margin="5,93,635,64"/>
+
+                <Button Content="Создать"
+                         Margin="170,30,488,126"
+                         Click="CreateArray"
+                         x:Name="Create"/>
+
+                <Button x:Name="ClearArray"
+                        Content="Очисить"
+                        Margin="170,94,488,65"
+                        Click="Clear"
+                        IsEnabled = "False"/>
+
+                <Label Content="Путь сохранения/загрузки"
+                       Margin="620,3,0,164"/>
+
+                <Button x:Name="Save"
+                        Content="Сохранить"
+                        Click="SaveArray"
+                        Margin="620,74,16,84"
+                        IsEnabled="False"/>
+
+                <Button x:Name="Load"
+                        Content="Загрузить"
+                        Click="LoadArray" 
+                        Margin="621,115,16,44"/>
+
+                <TextBox x:Name="Path"
+                         Margin="620,31,16,125"/>
+
+                <Button x:Name="Default"
+                        Content="По умолчанию"
+                        Click="DefaultArray"
+                        Margin="620,155,17,3"
+                        IsEnabled="False"/>
+
+                <Button x:Name="Calculate"
+                        Content="Расчитать"
+                        Click="CalculateArray"
+                        Margin="170,149,488,10"
+                        IsEnabled="False"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
