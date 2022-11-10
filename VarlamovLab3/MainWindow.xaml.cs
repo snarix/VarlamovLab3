@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LibMatrix;
 using Lib_3;
+using Microsoft.Win32;
 
 namespace VarlamovLab3
 {
@@ -83,12 +84,23 @@ namespace VarlamovLab3
 
         private void SaveArray(object sender, RoutedEventArgs e)
         {
-
+            SaveFileDialog saveFileDialog = new();
+            saveFileDialog.DefaultExt = matrix.Extension;
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                matrix.Save(saveFileDialog.FileName);
+            }
         }
 
         private void LoadArray(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFileDialog = new();
+            openFileDialog.DefaultExt = matrix.Extension;
+            if (openFileDialog.ShowDialog() == true)
+            {
+                matrix.Load(openFileDialog.FileName);
+                Table.ItemsSource = matrix.ToDataTable().DefaultView;
+            }
         }
 
 

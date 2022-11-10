@@ -1,7 +1,11 @@
 using System;
 using System.Data;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Media;
+using System.Xml.XPath;
 
 namespace LibMatrix
 {
@@ -19,10 +23,7 @@ namespace LibMatrix
             _matrix = new T[rowCount, columnCount];
             _row = rowCount;
             _column = columnCount;
-            Extension = extension;
         }
-
-        public string Extension { get; private set; }
 
         public T this[int rowIndex, int columnIndex]
         {
@@ -30,7 +31,7 @@ namespace LibMatrix
             set { _matrix[rowIndex, columnIndex] = value; }
         }
 
-        public int Row
+        public int CountRow
         {
             get => _row;
             private set
@@ -44,7 +45,7 @@ namespace LibMatrix
             }
         }
 
-        public int Column
+        public int CountColumn
         {
             get => _column;
             private set
@@ -59,30 +60,44 @@ namespace LibMatrix
         }
 
         public void DefaultInit()
-        {
-            for (int i = 0; i < Column; i++)
+        {      
+            for (int i = 0; i < CountColumn; i++)
             {
-                for (int j = 1; j < Row; j++)
+                for (int j = 1; j < CountRow; j++)
                 {
                     _matrix[i, j] = default;
                 }
             }
         }
 
+        private static readonly BinaryFormatter _formatter = new();
+        public readonly string Extension = ".matrix";
+
         public void Save(string path)
         {
+            string fullPath = string.Concat(path, Extension);
 
+            using (FileStream stream = new(fullPath, FileMode.Create))
+            {
+                _formatter.Serialize(stream, _matrix);
+            }
         }
 
         public void Load(string path)
         {
+            string fullPath = string.Concat(path, Extension);
+
+            using (FileStream stream = new(fullPath, FileMode.Open))
+            {
+                _matrix = _formatter.Deserialize(stream) as T[,];
+            }
 
         }
 
         public void Clear()
         {          
-            Row = 0;
-            Column = 0;
+            CountRow = 0;
+            CountColumn = 0;
             _matrix = new T[_row, _column];
         }
 

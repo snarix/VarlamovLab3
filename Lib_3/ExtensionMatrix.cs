@@ -9,9 +9,9 @@ namespace Lib_3
         {
             Random rnd = new Random();
 
-            for (int i = 0; i < matrix.Column; i++)
+            for (int i = 0; i < matrix.CountRow; i++)
             {
-                for (int j = 0; j < matrix.Row; j++)
+                for (int j = 0; j < matrix.CountColumn; j++)
                 {
                     matrix[i, j] = rnd.Next(min, max);
                 }
@@ -20,12 +20,12 @@ namespace Lib_3
 
         public static int ArrayDifference(this Matrix<int> matrix)
         {
-            int diff = matrix[0,0];
-            for (int i = 0; i < matrix.Column; i++)
+            int diff = 0;
+            for (int i = 0; i < matrix.CountRow; i++)
             {
-                for (int j = 1; j < matrix.Row; j++)
+                for (int j = 0; j < matrix.CountColumn; j++)
                 {
-                    diff -= matrix[i,j];
+                    diff -= matrix[i,j];                   
                 }
             }
             return diff;
