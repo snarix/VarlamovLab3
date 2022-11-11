@@ -8,8 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="i.webp" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LibMatrix\LibMatrix.csproj" />
     <ProjectReference Include="..\Lib_3\Lib_3.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="i.webp" />
   </ItemGroup>
 
 </Project>

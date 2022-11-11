@@ -39,7 +39,7 @@ namespace VarlamovLab3
             MessageBox.Show("");
         }
 
-        Matrix<int> matrix;
+        Matrix<int> matrix = new(0,0);
 
         private void CreateArray(object sender, RoutedEventArgs e)
         {
@@ -73,7 +73,8 @@ namespace VarlamovLab3
 
         private void DefaultArray(object sender, RoutedEventArgs e)
         {
-
+            matrix.DefaultInit();
+            Table.ItemsSource = matrix.ToDataTable().DefaultView;
         }
 
         private void Clear(object sender, RoutedEventArgs e)
@@ -96,6 +97,7 @@ namespace VarlamovLab3
         {
             OpenFileDialog openFileDialog = new();
             openFileDialog.DefaultExt = matrix.Extension;
+            openFileDialog.Filter = "Матрица| *.matrix";
             if (openFileDialog.ShowDialog() == true)
             {
                 matrix.Load(openFileDialog.FileName);

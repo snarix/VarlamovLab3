@@ -18,7 +18,7 @@ namespace LibMatrix
         private readonly int _defaultRowCount = 3;
         private readonly int _defaultColumnCount = 4;
 
-        public Matrix(int rowCount, int columnCount, string extension = ".matrix")
+        public Matrix(int rowCount, int columnCount)
         {
             _matrix = new T[rowCount, columnCount];
             _row = rowCount;
@@ -59,11 +59,15 @@ namespace LibMatrix
             }
         }
 
+        /// <summary>
+        /// Делает значение по умолчанию в матрице
+        /// </summary>
+    
         public void DefaultInit()
         {      
-            for (int i = 0; i < CountColumn; i++)
+            for (int i = 0; i < CountRow; i++)
             {
-                for (int j = 1; j < CountRow; j++)
+                for (int j = 0; j < CountColumn; j++)
                 {
                     _matrix[i, j] = default;
                 }
@@ -73,27 +77,42 @@ namespace LibMatrix
         private static readonly BinaryFormatter _formatter = new();
         public readonly string Extension = ".matrix";
 
+        /// <summary>
+        /// Сохраняет файл
+        /// </summary>
+        /// <param name="path">путь сохранения файла</param>
+
         public void Save(string path)
         {
-            string fullPath = string.Concat(path, Extension);
-
-            using (FileStream stream = new(fullPath, FileMode.Create))
+            using (FileStream stream = new(path, FileMode.Create))
             {
                 _formatter.Serialize(stream, _matrix);
             }
         }
 
+        /// <summary>
+        /// открывает файл
+        /// </summary>
+        /// <param name="path">путь сохранения файла</param>
+        /// <exception cref="FileNotFoundException">Исключение/ошибка</exception>
+       
         public void Load(string path)
         {
-            string fullPath = string.Concat(path, Extension);
-
-            using (FileStream stream = new(fullPath, FileMode.Open))
+            if (!File.Exists(path))
+            {
+                throw new FileNotFoundException();
+            }
+            using (FileStream stream = new(path, FileMode.Open))
             {
                 _matrix = _formatter.Deserialize(stream) as T[,];
             }
 
         }
 
+        /// <summary>
+        /// Очищает матрицу
+        /// </summary>
+       
         public void Clear()
         {          
             CountRow = 0;
@@ -101,6 +120,11 @@ namespace LibMatrix
             _matrix = new T[_row, _column];
         }
 
+        /// <summary>
+        /// Выводит матрицу в DataGrid
+        /// </summary>
+        /// <returns></returns>
+        
         public DataTable ToDataTable()
         {
             var res = new DataTable();
